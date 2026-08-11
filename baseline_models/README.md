@@ -4,9 +4,9 @@ Classical machine learning models trained before moving to CNNs, used to establi
 
 ## Contents
 
-- `brightness_training.py` — KNN, Random Forest (including a bootstrapping variant), Logistic Regression, and SVM models trained on per-image brightness values.
-- `full_image_training.py` — KNN, Random Forest, and Logistic Regression models trained on raw RGB pixel data.
-- `model_metrics.py` — evaluation utilities for accuracy, precision, recall, F1 score, confusion matrix, ROC curve, and AUC.
+- `brightness_training.py`: KNN, Random Forest (including a bootstrapping variant), Logistic Regression, and SVM models trained on per-image brightness values.
+- `full_image_training.py`: KNN, Random Forest, and Logistic Regression models trained on raw RGB pixel data.
+- `model_metrics.py`: evaluation utilities for accuracy, precision, recall, F1 score, confusion matrix, ROC curve, and AUC.
 
 ## Requirements
 
