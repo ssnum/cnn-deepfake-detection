@@ -4,7 +4,7 @@ Exploratory analysis of the [CIFAKE](https://www.kaggle.com/datasets/birdy654/ci
 
 ## Contents
 
-- `data_visualizations.py` — downloads and sorts the dataset, then computes and plots, for real vs. AI-generated images:
+- `data_visualizations.py`: downloads and sorts the dataset, then computes and plots, for real vs. AI-generated images:
   - Average red, green, and blue color intensity per image
   - Average brightness per image
   - Gradient magnitude per image

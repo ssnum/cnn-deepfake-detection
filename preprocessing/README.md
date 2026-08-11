@@ -4,7 +4,7 @@ Shared preprocessing steps used to prepare the CIFAKE dataset for CNN input.
 
 ## Contents
 
-- `cnn_preprocessing.py` — converts labels to one-hot encoded vectors and reshapes flattened image arrays back into `(32, 32, 3)` image tensors for both the training and test sets.
+- `cnn_preprocessing.py`: converts labels to one-hot encoded vectors and reshapes flattened image arrays back into `(32, 32, 3)` image tensors for both the training and test sets.
 
 ## Requirements
 
