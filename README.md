@@ -21,9 +21,22 @@ The research proceeded in stages, each reflected in a directory of this reposito
 
 ## Results
 
-- The **custom CNN** achieved the highest validation accuracy at **97%** on the primary dataset, ahead of the fine-tuned **ResNet50** (94%) and the best modified age-classification variant (92.36%).
-- When evaluated on a second, held-out dataset to test generalization, the custom CNN's accuracy dropped to **81.1%**, highlighting the generalization gap common to deepfake detectors trained on a single data distribution.
-- Full architecture-by-architecture comparisons (VGG16, VGG19, DenseNet121, ResNet50, and the custom model) and complete methodology are detailed in the [published paper](https://nhsjs.com/2025/applications-of-existing-convolutional-neural-networks-to-deepfake-detection/).
+Validation accuracy by model, on the primary (CIFAKE) dataset:
+
+| Model | Validation Accuracy |
+|---|---|
+| VGG16 (from scratch) | 50.25% |
+| VGG19 (from scratch) | 50.25% |
+| VGG (transfer learning) | 80.97% |
+| DenseNet121 (transfer learning) | 83.78% |
+| ResNet50 (transfer learning) | 93.55% |
+| Age-classifier, best variant (4 conv, [512,512,2]) | 92.37% |
+| **Custom CNN** | **96.96%** |
+
+- The **custom CNN** was the best-performing model at **~97%** validation accuracy, ahead of every pretrained architecture and the best modified age-classification variant.
+- VGG16 and VGG19 trained from scratch (no pretrained weights) essentially failed to learn, landing at chance level for binary classification; the transfer-learning versions of the same architectures performed far better, underscoring how much of the signal came from ImageNet pretraining rather than the architecture itself.
+- When evaluated on a second, held-out dataset (Manjil Karki's Deepfake and Real Images, from Kaggle) to test generalization, the custom CNN's accuracy dropped to **81.1%**, and saliency maps showed the model's focus shifting and becoming less concentrated, evidence that some of its performance was dataset-specific rather than general.
+- Full methodology, per-epoch metrics, and saliency map visualizations are in the [published paper](https://nhsjs.com/2025/applications-of-existing-convolutional-neural-networks-to-deepfake-detection/).
 
 ## Repository Structure
 
@@ -40,7 +53,9 @@ Each directory has its own README describing its contents in more detail.
 
 ## Dataset
 
-All models were trained and evaluated on the [CIFAKE: Real and AI-Generated Synthetic Images](https://www.kaggle.com/datasets/birdy654/cifake-real-and-ai-generated-synthetic-images) dataset from Kaggle (approximately 20,000 real images and 60,000 AI-generated images).
+Models were trained and evaluated on the [CIFAKE: Real and AI-Generated Synthetic Images](https://www.kaggle.com/datasets/birdy654/cifake-real-and-ai-generated-synthetic-images) dataset from Kaggle: 120,000 images total, 60,000 real (from CIFAR-10) and 60,000 AI-generated (Stable Diffusion 1.4, generated to match CIFAR-10), split 80:20 into train/test, with the test set further split in half to create a validation set.
+
+Generalizability was additionally tested on a second, held-out dataset: [Deepfake and Real Images](https://www.kaggle.com/datasets/manjilkarki/deepfake-and-real-images) by Manjil Karki, also from Kaggle.
 
 ## Tech Stack
 

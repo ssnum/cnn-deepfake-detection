@@ -1,6 +1,6 @@
 # Data Visualization
 
-Exploratory analysis of the [CIFAKE](https://www.kaggle.com/datasets/birdy654/cifake-real-and-ai-generated-synthetic-images) dataset (~20,000 real images, ~60,000 AI-generated images), used to identify measurable differences between real and AI-generated images before model design began.
+Exploratory analysis of the [CIFAKE](https://www.kaggle.com/datasets/birdy654/cifake-real-and-ai-generated-synthetic-images) dataset (60,000 real images from CIFAR-10, 60,000 AI-generated images), used to identify measurable differences between real and AI-generated images before model design began.
 
 ## Contents
 
