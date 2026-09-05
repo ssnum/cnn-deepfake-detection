@@ -15,15 +15,17 @@ The research proceeded in stages, each reflected in a directory of this reposito
 
 1. **Data exploration**: analyzing color intensity, brightness, and gradient magnitude patterns between real and AI-generated images.
 2. **Classical ML baselines**: KNN, Random Forest, Logistic Regression, and SVM models trained on brightness values and raw pixel data, establishing a performance floor before moving to deep learning.
-3. **CNN architectures**: VGG16 and VGG19 (built from scratch and via transfer learning), DenseNet121, and ResNet50, each fine-tuned for binary real-vs-fake classification.
+3. **CNN architectures**: VGG16 and VGG19 (built from scratch and via transfer learning), DenseNet121, and ResNet50 (partial fine-tuning: the first 7 residual blocks frozen, block 8 onward unfrozen), each evaluated for binary real-vs-fake classification.
 4. **Custom CNN**: an original architecture iterated across several versions, adding data augmentation, batch normalization, and learning-rate scheduling.
 5. **Transfer experiment**: adapting a CNN architecture originally designed for age classification to the deepfake detection task.
+6. **Generalizability analysis**: saliency maps and cross-entropy loss compared across models and across a second, held-out dataset, to see how much of each model's accuracy is dataset-specific rather than general.
 
 ## Results
 
-- The **custom CNN** achieved the highest validation accuracy at **97%** on the primary dataset.
-- When evaluated on a second, held-out dataset to test generalization, accuracy dropped to **81.1%**, highlighting the generalization gap common to deepfake detectors trained on a single data distribution.
-- Full architecture-by-architecture comparisons (VGG16, VGG19, DenseNet121, ResNet50, and the custom model) and complete methodology are detailed in the [published paper](https://nhsjs.com/2025/applications-of-existing-convolutional-neural-networks-to-deepfake-detection/).
+- The **custom CNN** achieved the highest validation accuracy at **97%** on the primary dataset, ahead of the fine-tuned **ResNet50** (94%) and the best modified age-classification variant (92.36%).
+- When evaluated on a second, held-out dataset to test generalization, the custom CNN's accuracy dropped to **81.1%**, highlighting the generalization gap common to deepfake detectors trained on a single data distribution.
+- Saliency maps showed clear differences in what each architecture attended to, and evidence of overfitting, underscoring the need for larger, more generalizable deepfake datasets.
+- Full architecture-by-architecture comparisons and complete methodology are detailed in the [published paper](https://nhsjs.com/2025/applications-of-existing-convolutional-neural-networks-to-deepfake-detection/).
 
 ## Repository Structure
 
@@ -32,8 +34,9 @@ CNNs-for-Deepfake-Detection/
 ├── data_visualization/          # EDA: color, brightness, and gradient analysis of real vs. fake images
 ├── preprocessing/                # Dataset loading and preprocessing for CNN input
 ├── baseline_models/              # Classical ML baselines (KNN, Random Forest, Logistic Regression, SVM)
-└── cnn_models/                   # CNN architectures and the custom model
-    └── age_classifier_experiment/   # Transfer experiment adapting an age-classification CNN
+├── cnn_models/                   # CNN architectures and the custom model
+│   └── age_classifier_experiment/   # Transfer experiment adapting an age-classification CNN
+└── analysis/                     # Saliency maps and cross-dataset generalizability analysis
 ```
 
 Each directory has its own README describing its contents in more detail.
