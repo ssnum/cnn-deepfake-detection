@@ -21,8 +21,8 @@ The research proceeded in stages, each reflected in a directory of this reposito
 
 ## Results
 
-- The **custom CNN** achieved the highest validation accuracy at **97%** on the primary dataset.
-- When evaluated on a second, held-out dataset to test generalization, accuracy dropped to **81.1%**, highlighting the generalization gap common to deepfake detectors trained on a single data distribution.
+- The **custom CNN** achieved the highest validation accuracy at **97%** on the primary dataset, ahead of the fine-tuned **ResNet50** (94%) and the best modified age-classification variant (92.36%).
+- When evaluated on a second, held-out dataset to test generalization, the custom CNN's accuracy dropped to **81.1%**, highlighting the generalization gap common to deepfake detectors trained on a single data distribution.
 - Full architecture-by-architecture comparisons (VGG16, VGG19, DenseNet121, ResNet50, and the custom model) and complete methodology are detailed in the [published paper](https://nhsjs.com/2025/applications-of-existing-convolutional-neural-networks-to-deepfake-detection/).
 
 ## Repository Structure
